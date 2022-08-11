@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!--In content we put the App Client Id created in the Google Dev Console -->
     <title>Document</title>
 </head>
 <body>
-    
+    <main>
+        <form action="index.php" method="post">
+            <input type="hidden" name="recap-token" id="g-recap">
+            <h1>Recaptcha<span class="emphasize">.</span></h1>
+            <br><br>
+            <input type="text" name="first-name" id="" placeholder="Nom">
+            <input type="text" name="last-name" id="" placeholder="Prenom">
+            <button class="login">Se connecter</button>
+            <button id="google-sign-in"></button>
+        </form>
+    </main>
+    <script src="https://accounts.google.com/gsi/client"></script>
+    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
 </body>
 </html>
