@@ -24,15 +24,6 @@ function handleCredentialResponse(response){
     console.log(responsePayload);
 }
 
-function signOut() {
-    try {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut();
-    } catch (error) {
-        console.log(error);
-    }
-}
-
   function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.

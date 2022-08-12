@@ -74,5 +74,6 @@ input[type="text"]::placeholder{
 }
 #google-sign-in{
     border: none;
+    background-color: transparent;
     border-radius: var(--button-radius);
 }
