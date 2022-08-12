@@ -1,7 +1,7 @@
 //   const firebaseUrl = "https://static-bee-359111.web.app/";
+var appClientId = "462270519373-pinvk0cdvopptfirjbjatf9fp297tofk.apps.googleusercontent.com";
 document.addEventListener('DOMContentLoaded', initialize);
 function initialize() {
-    let appClientId = "462270519373-pinvk0cdvopptfirjbjatf9fp297tofk.apps.googleusercontent.com";
     let googleHelper = google.accounts.id;
 
     googleHelper.initialize({
@@ -12,12 +12,16 @@ function initialize() {
 
     googleHelper.renderButton(
         document.querySelector('#google-sign-in'),
-        { theme: "outline", size: "large" }
+        { 
+            theme: "outline", size: "large",
+        }
     );
 }
 
 function handleCredentialResponse(response){
-    console.log("token: " + response,);
+    console.log(response);
+    const responsePayload = parseJwt(response.credential);
+    console.log(responsePayload);
 }
 
 function signOut() {
@@ -36,3 +40,13 @@ function signOut() {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
+
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
