@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/08fabf7e87.js" crossorigin="anonymous"></script>
     <!--In content we put the App Client Id created in the Google Dev Console -->
     <title>Document</title>
 </head>
@@ -21,7 +22,10 @@
             <!--Google Sign in button-->
             <button id="google-sign-in"></button>
             <!--Facebook login button--> 
-            <button class="fb-login-btn">Se connecter avec facebook</button>
+            <button class="fb-login-btn">
+                <div class="login-icon-wrapper"><i class="fa-brands fa-facebook fa-xl"></div></i>
+                <span class="login-text">Se connecter avec facebook</span>
+            </button>
         </form>
     </main>
     <script src="https://accounts.google.com/gsi/client"></script>

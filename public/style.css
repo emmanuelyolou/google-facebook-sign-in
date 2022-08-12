@@ -81,11 +81,21 @@ input[type="text"]::placeholder{
     border-radius: var(--button-radius);
 }
 .fb-login-btn{
-    padding: .7rem 2.5rem;
     border: none;
     border-radius: var(--button-radius);
     color: #fff;
     background-color: #1877F2;
     font-style: bolder;
     font-size: .8rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.fb-login-btn > * {
+    padding: .7rem .7rem;
+    display: flex;
+    justify-content: center;
+}
+button .login-text{
+    margin-right: auto;
 }
