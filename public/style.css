@@ -80,7 +80,7 @@ input[type="text"]::placeholder{
     background-color: transparent;
     border-radius: var(--button-radius);
 }
-.fb-login-btn{
+.fb-login-btn, .fb-logout-btn{
     border: none;
     border-radius: var(--button-radius);
     color: #fff;
@@ -91,10 +91,13 @@ input[type="text"]::placeholder{
     flex-flow: row wrap;
     align-items: center;
 }
-.fb-login-btn > * {
+.fb-login-btn > *, .fb-logout-btn > * {
     padding: .7rem .7rem;
     display: flex;
     justify-content: center;
+}
+.fb-logout-btn{
+    background-color: #F44336;
 }
 button .login-text{
     margin-right: auto;

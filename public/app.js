@@ -33,17 +33,6 @@ function handleCredentialResponse(response){
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
 
-function parseJwt (token) {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload);
-};
-
-
 //Facebook
 const fbAppId = "773896347069718";
 window.fbAsyncInit = function() {
@@ -56,22 +45,36 @@ window.fbAsyncInit = function() {
       
     FB.AppEvents.logPageView();   
     document.querySelector('.fb-login-btn').addEventListener('click', function (e){ LogInWithFacebook(e)});
+    document.querySelector('.fb-logout-btn').addEventListener('click', function (e){ logOutFromFacebook(e)});
 
     function LogInWithFacebook(e){
         e.preventDefault();
-        console.log(e);
         //TODO: Search for a way to separate functions from the fbAsyncInit method
         FB.login(function(response){
             console.log(response);
             FB.getLoginStatus(function(response) {
-                if(response.status != "connected"){
-                    FB.login();
+                if(response.status == "connected"){
+                    // alert('Utilisateur connecté');
+                    FB.api('/me', function(response) {
+                        console.log(response);
+                    });
                 }
                 else{
-                    //Redirect to App
+                    //
                 }
             });
+        }, {
+            scope: 'public_profile,email',
+            return_scopes: true            
         });
+    }
+
+    function logOutFromFacebook(e){
+        e.preventDefault();
+        FB.logout(function(response) {
+            alert('Utilisateur déconnecté');
+            console.log(response);
+         });
     }
   };
 
@@ -85,3 +88,13 @@ window.fbAsyncInit = function() {
    }(document, 'script', 'facebook-jssdk'));
 
  
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
+
