@@ -8,7 +8,8 @@
     <!--In content we put the App Client Id created in the Google Dev Console -->
     <title>Document</title>
 </head>
-<body>
+<body><div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=773896347069718&autoLogAppEvents=1" nonce="v8eVpMAU"></script>
     <main>
         <form method="post">
             <h1>Connexion<span class="emphasize">.</span></h1>
@@ -16,7 +17,13 @@
             <input type="text" name="first-name" id="" placeholder="Nom">
             <input type="text" name="last-name" id="" placeholder="Prenom">
             <button class="login">Se connecter</button>
+            
+            <!--Google Sign in button-->
             <button id="google-sign-in"></button>
+            <!--Facebook login button--> 
+            <div class="fb-login-button" data-width="272" data-size="large" data-button-type="login_with" 
+                data-layout="default" data-auto-logout-link="true" data-use-continue-as="true">
+            </div>
         </form>
     </main>
     <script src="https://accounts.google.com/gsi/client"></script>

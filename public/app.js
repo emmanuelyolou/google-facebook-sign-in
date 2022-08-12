@@ -58,6 +58,9 @@ window.fbAsyncInit = function() {
 
     FB.getLoginStatus(function(response) {
         console.log(response);
+        // if(response.status != "connected"){
+        //     FB.login();
+        // }
     });
       
   };
