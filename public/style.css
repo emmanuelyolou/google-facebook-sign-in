@@ -39,6 +39,9 @@ main{
     background-color: #90CAF9;
     box-shadow: 0 10px 20px -10px rgb(102, 102, 102);
 }
+button{
+    cursor: pointer;
+}
 main * {
 }
 form{
@@ -76,4 +79,13 @@ input[type="text"]::placeholder{
     border: none;
     background-color: transparent;
     border-radius: var(--button-radius);
+}
+.fb-login-btn{
+    padding: .7rem 2.5rem;
+    border: none;
+    border-radius: var(--button-radius);
+    color: #fff;
+    background-color: #1877F2;
+    font-style: bolder;
+    font-size: .8rem;
 }

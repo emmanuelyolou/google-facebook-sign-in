@@ -55,14 +55,24 @@ window.fbAsyncInit = function() {
     });
       
     FB.AppEvents.logPageView();   
+    document.querySelector('.fb-login-btn').addEventListener('click', function (e){ LogInWithFacebook(e)});
 
-    FB.getLoginStatus(function(response) {
-        console.log(response);
-        // if(response.status != "connected"){
-        //     FB.login();
-        // }
-    });
-      
+    function LogInWithFacebook(e){
+        e.preventDefault();
+        console.log(e);
+        //TODO: Search for a way to separate functions from the fbAsyncInit method
+        FB.login(function(response){
+            console.log(response);
+            FB.getLoginStatus(function(response) {
+                if(response.status != "connected"){
+                    FB.login();
+                }
+                else{
+                    //Redirect to App
+                }
+            });
+        });
+    }
   };
 
   //Initializes the javascript sdk
