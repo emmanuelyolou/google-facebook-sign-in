@@ -1,5 +1,12 @@
 # google-facebook-sign-in
 Simple implementation of google and facebook sign in methods
 
-An implementation could be using the google signin methods to retrieve the user's credentials,
-get his name, email to register or authenticate him
+The flow using google could be using the returned user info (name, email and so one) to 
+register or log him
+
+The flow using FB is a little more tricky:
+- You should launch your app in a https environment (important)
+- You must make an additional request to graph api to get the info you want after the user is logged in
+- If you want to release the app officially, it must be reviewed by fb, by adding additional info in the app dashboard
+(info listed on their docs)
+
